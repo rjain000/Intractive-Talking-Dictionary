@@ -37,16 +37,16 @@ def retrive_definition(word):
         else:
             return ("We don't understand your entry. Try again.")
 
+def show(output):
+    if type(output) == list:  # if output DataType is list (multi value)
+        for item in output:  # multiple Output/def/meaning
+            print("-", item)
+            talk(item)
+    else:  # single Output/def/meaning
+        print("-", output)
+        talk(output)
 
 word_user = input("Enter a word: ")
 
 output = retrive_definition(word_user) #calling the function
-
-if type(output) == list:  #if output DataType is list (multi value)
-    for item in output:   #multiple Output/def/meaning
-        print("-",item)
-        talk(item)
-
-else:  #single Output/def/meaning
-    print("-",output)
-    talk(output)
+show(output)
