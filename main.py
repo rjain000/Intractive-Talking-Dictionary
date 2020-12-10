@@ -1,10 +1,10 @@
-import json     #for dict
-from difflib import get_close_matches     #to find close match
-import pyttsx3    #text to speech
+import json #for dict
+from difflib import get_close_matches #to find close match
+import pyttsx3 #text to speech
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
+engine.setProperty('voice', voices[1].id)           #for female voice
 
 def talk(text):
     engine.say(text)
@@ -33,9 +33,9 @@ def retrive_definition(word):
         if (action.lower() == "y"):
             return data[get_close_matches(word, data.keys())[0]]
         elif (action.lower() == "n"):
-            return ("The word doesn't exist, yet.")
+            return ("The word doesn't exist yet.")
         else:
-            return ("We don't understand your entry. Apologies.")
+            return ("We don't understand your entry. Try again.")
 
 
 word_user = input("Enter a word: ")
@@ -49,3 +49,4 @@ if type(output) == list:  #if output DataType is list (multi value)
 
 else:  #single Output/def/meaning
     print("-",output)
+    talk(output)
